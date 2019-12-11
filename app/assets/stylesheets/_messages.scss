@@ -139,16 +139,21 @@
     padding: 20px 40px;
     display:flex;
     align-items: center;
+    
 
-      &__newbox{
-        position: relative;
-        height: 50px;
-        width: 100%;
-        color: #434a54;
+    &__newbox{
+      position: relative;
+      height: 50px;
+      width: 100% ;
+      color: #434a54;
         
-        &__message{
+      .new_message{
+
+        display: flex;
+
+        .main-chat__message-form__newbox__message{
           height: 50px;
-          width: 100%;
+          width: calc(100vw - 500px);
           padding: 0 40px 0 10px;
           color: #434a54;
           border-style: none;
@@ -156,7 +161,7 @@
           &__icon{
             cursor: pointer; 
             top: 10px;
-            right: 10px;
+            right: 150px;
             font-size: 1.3rem;
             position:absolute;
 
@@ -165,7 +170,7 @@
             }
           }
         }
-        &__btn{
+        .main-chat__message-form__newbox__btn{
           width: 100px;
           height: 50px;
           padding: 0 30px;
@@ -176,6 +181,7 @@
           line-height: 50px;
         }
       }
+    }
   }
 }
 
