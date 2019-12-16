@@ -78,25 +78,27 @@ $(function(){
     })
   })
   var reloadMessages = function() {
-    last_message_id = $('.message:last').data('message-id');
+    if (location.href.match(/\/groups\/\d+\/messages/)){
+      last_message_id = $('.message:last').data('message-id');
 
-    $.ajax({
-      url: "api/messages",
-      type: 'get',
-      dataType: 'json',
-      data: {id: last_message_id} 
-    })
-    .done(function(messages) {
-      var insertHTML = '';
-      $.each(messages, function(i, message) {
-        insertHTML += buildHTML(message)
+      $.ajax({
+        url: "api/messages",
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id} 
+      })
+      .done(function(messages) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.main-chat__message-list__message').append(insertHTML);
+        $('.main-chat__message-list').animate({ scrollTop: $('.main-chat__message-list')[0].scrollHeight})
+      })
+      .fail(function() {
+        alert('error');
       });
-      $('.main-chat__message-list__message').append(insertHTML);
-      $('.main-chat__message-list').animate({ scrollTop: $('.main-chat__message-list')[0].scrollHeight})
-    })
-    .fail(function() {
-      alert("通信エラーです。メッセージを送信できません.");
-    });
+    }
   };
   setInterval(reloadMessages, 7000);
 })
