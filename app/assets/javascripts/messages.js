@@ -53,7 +53,7 @@ $(function(){
     };
     return html;
   };
-  
+
   $("#new_message").on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -95,7 +95,7 @@ $(function(){
       $('.main-chat__message-list').animate({ scrollTop: $('.main-chat__message-list')[0].scrollHeight})
     })
     .fail(function() {
-      console.log('error');
+      alert("通信エラーです。メッセージを送信できません.");
     });
   };
   setInterval(reloadMessages, 7000);
